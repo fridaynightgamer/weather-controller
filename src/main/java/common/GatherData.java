@@ -3,6 +3,7 @@ package common;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class GatherData {
     public static final MediaType JSON=MediaType.get("application/json");
@@ -16,7 +17,7 @@ public class GatherData {
                 .build();
         try{
             Response response=client.newCall(request).execute();
-            return response.body().string();
+            return Objects.requireNonNull(response.body()).string();
         }catch (IOException e){
             return null;
         }
@@ -28,7 +29,7 @@ public class GatherData {
                 .build();
         try{
             Response response=client.newCall(request).execute();
-            return response.body().string();
+            return Objects.requireNonNull(response.body()).string();
         }catch (IOException e){
             return null;
         }
